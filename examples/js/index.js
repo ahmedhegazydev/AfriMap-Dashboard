@@ -18,38 +18,43 @@
 
     $("#btn-add-section").click(function(){
 
-alert("Clickedd");
-
         var section = $("#section").val();
-        // alert("hi"); 
-        var database = firebase.database();
-        var ref =  database.ref().child("Sections").push().ser("Ahmed");
-        
+      
 
-        if(section != ""){
-            alert("Enter sction please"); 
+        if(section){
 
-            var sectionData = {
-                "section":  section
-                // "sectionName": section, 
-                // "sectionName": section, 
-            }
-            // firebase.push();
-            
-            firebase.database().ref("sections").set({
-             sectData
-              }, (error) => {
+            var database = firebase.database();
+            var ref =  database.ref().child("Sections").push().set({section}, (error) => {
                 if (error) {
-                  // The write failed...
-alert("The write failed...");
+                    alert("Data saving failed");
                 } else {
-                  // Data saved successfully!
-                  alert("Data saved successfull");
+                 
+                    alert("Section saved Successfully");
                 }
               });
 
+
+            // var sectionData = {
+                // "section":  section
+                // "sectionName": section, 
+                // "sectionName": section, 
+            // }
+            // firebase.push();
+            
+            // firebase.database().ref("sections").set({
+            //     sectionData
+            //   }, (error) => {
+            //     if (error) {
+               
+            //         alert("Data saving failed");
+            //     } else {
+                 
+            //         alert("Section saved Successfully");
+            //     }
+            //   });
+
         }else{
-    
+            alert("Enter sction please"); 
         }
     
     
